@@ -1,12 +1,6 @@
 # bokchoy
-The Bokchoy Triple Scorer
-Our code sharing contains 2 part, the first is scorers implementation, the second is some data we used.
+The Bokchoy Triple Scorer.
+I am so sorry to say that there is still some code and data to tidy up, we will finish it as soon as possible.
 
-Folder 'scorers' contains all methods we have implemented in WSDM Cup 2017
-word_classification.py : Word Classification
-word_counting.py : Word Counting
-word_mle.py : Word MLE
-ensemble.py : ensemble method
-refinement.py : Refine by Trigger Word Detection
-
-Folder 'path' is the path of data, and the data root path is configured in conf.py.
+At present we have release the scorer's kernel code contained in folder 'scorers', each file correspond to a scorer
+implementation.
