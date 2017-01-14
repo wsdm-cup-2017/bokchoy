@@ -12,8 +12,8 @@ def vectorize(task, type_pos_neg_persons):
     for person_type, persons in tqdm(type_pos_neg_persons.items()):
         type_tfidf = TfidfVectorizer(max_features=20000, stop_words='english')
         train_feature = type_tfidf.fit_transform(get_persons_text(persons))
-        quick_dump(path.type_tfidf(task, person_type), dump_type='model')
-        quick_dump(path.train_feature(task, person_type), dump_type='pkl')
+        quick_dump(type_tfidf, path.type_tfidf(task, person_type), dump_type='model')
+        quick_dump(train_feature, path.train_feature(task, person_type), dump_type='pkl')
 
 
 def train(task, type_pos_neg_persons, type_person_label):
@@ -32,7 +32,7 @@ def predict(task, triples):
     problem = []
     for person, person_type in tqdm(triples):
         try:
-            vectorizer = safe_load(path.vectorizer(task, person_type), load_type='model')
+            vectorizer = safe_load(path.type_tfidf(task, person_type), load_type='model')
             lr = safe_load(path.model(task, person_type), load_type='model')
             X_test = vectorizer.transform(get_person_text(person))
             score = lr.predict_proba(X_test)

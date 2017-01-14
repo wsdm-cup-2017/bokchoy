@@ -2,7 +2,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from tools import quick_dump, safe_load
 from reader import get_type_text, get_person_text
 from tqdm import tqdm
-import path.words_counting as path
+import path.word_counting as path
 import numpy as np
 
 

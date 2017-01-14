@@ -1,1 +1,1 @@
-project_root = 'D:\WSDM_DATA'
+data_root = 'D:\WSDM_DATA'

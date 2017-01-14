@@ -30,6 +30,36 @@ def map_scale(scores):
     return [int(score * 8 - 0.00001) for score in scores]
 
 
+def triplify(triple_file):
+    triples = []
+    with open(triple_file, 'rb') as f:
+        for line in f:
+            x = line.decode().split('\t')
+            x[-1] = x[-1][:-1]
+            if len(x) == 1:
+                x = x[0]
+            triples.append(x)
+    return triples
+
+
+def dictify_2items(triples):
+    result = {}
+    for h, r in triples:
+        if not h in result.keys():
+            result[h] = []
+        result[h].append(r)
+    return result
+
+
+def dictify_2items_reverse(triples):
+    result = {}
+    for h, r in triples:
+        if not r in result.keys():
+            result[r] = []
+        result[r].append(h)
+    return result
+
+
 def safe_load(path, load_type='pkl'):
     if load_type == 'pkl':
         return pickle.load(open(path, 'rb'))
